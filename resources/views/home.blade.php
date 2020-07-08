@@ -13,6 +13,11 @@
           </div>
 
           <div class="card-body">
+            @if ($errors->any())
+              @foreach ($errors->all() as $key => $err)
+                <div class="alert alert-danger notif text-center font-weight-bold">{{ $err }}</div>
+              @endforeach
+            @endif
             @if (session('status'))
               <div class="alert notif alert-success text-center font-weight-bold" role="alert">
                 {{ session('status') }}

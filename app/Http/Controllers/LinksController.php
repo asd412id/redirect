@@ -72,9 +72,15 @@ class LinksController extends Controller
 
   public function edit($uuid)
   {
+    $data = auth()->user()->links()->where('uuid',$uuid)->first();
+
+    if (!$data) {
+      return redirect()->route('home')->withErrors('Data tidak ditemukan!');
+    }
+
     $data = [
       'title'=>'Ubah Link',
-      'data'=>auth()->user()->links()->where('uuid',$uuid)->first()
+      'data'=>$data
     ];
 
     return view('links.edit',$data);
@@ -103,6 +109,11 @@ class LinksController extends Controller
     }
 
     $insert = auth()->user()->links()->where('uuid',$uuid)->first();
+
+    if (!$insert) {
+      return redirect()->route('home')->withErrors('Data tidak ditemukan!');
+    }
+
     $insert->name = $r->name??$r->shortlink;
     $insert->shortlink = Str::slug($r->shortlink);
     $insert->destination = $r->destination;
@@ -118,6 +129,11 @@ class LinksController extends Controller
   public function destroy($uuid)
   {
     $link = auth()->user()->links()->where('uuid',$uuid)->first();
+
+    if (!$link) {
+      return redirect()->route('home')->withErrors('Data tidak ditemukan!');
+    }
+
     if ($link->delete()) {
       return redirect()->route('home')->with('status','Link berhasil dihapus!');
     }

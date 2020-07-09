@@ -51,7 +51,7 @@ class LinksController extends Controller
 
     $cek = Links::where('shortlink',Str::slug($r->shortlink))->count();
 
-    if ($cek) {
+    if ($cek || Str::slug($r->shortlink) == 'signin' || Str::slug($r->shortlink) == 'signup' || Str::slug($r->shortlink) == 'login' || Str::slug($r->shortlink) == 'register') {
       return redirect()->back()->withInput()->withErrors('Short link telah digunakan!');
     }
 
@@ -104,7 +104,7 @@ class LinksController extends Controller
     ->where('uuid','!=',$uuid)
     ->count();
 
-    if ($cek) {
+    if ($cek || Str::slug($r->shortlink) == 'signin' || Str::slug($r->shortlink) == 'signup' || Str::slug($r->shortlink) == 'login' || Str::slug($r->shortlink) == 'register') {
       return redirect()->back()->withInput()->withErrors('Short link telah digunakan!');
     }
 

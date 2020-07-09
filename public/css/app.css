@@ -17252,3 +17252,7 @@ readers do not read off random characters that represent icons */
   width: 100% !important;
 }
 
+.dataTable td {
+  word-break: break-all !important;
+}
+

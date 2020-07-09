@@ -17,4 +17,7 @@
 }
 .dataTable{
   width: 100% !important;
+  td{
+    word-break: break-all !important;
+  }
 }

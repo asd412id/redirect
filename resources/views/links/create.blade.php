@@ -44,7 +44,7 @@
               </div>
             </div>
             <div class="card-footer text-right">
-              <button type="submit" class="btn btn-primary">SIMPAN</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
               <a href="{{ url()->previous() }}" class="btn btn-danger">Batal</a>
             </div>
           </div>

@@ -11,7 +11,7 @@ class LinksController extends Controller
 {
   public function index($custom='')
   {
-    $link = Links::where('shortlink',$custom)->first();
+    $link = Links::where('shortlink',Str::slug($custom))->first();
     if ($link) {
       if (!$link->active) {
         return view('welcome',[

@@ -45,7 +45,7 @@
             </div>
             <div class="card-footer text-right">
               <button type="submit" class="btn btn-primary">Simpan</button>
-              <a href="{{ url()->previous() }}" class="btn btn-danger">Batal</a>
+              <a href="{{ route('home') }}" class="btn btn-danger">Batal</a>
             </div>
           </div>
         </form>

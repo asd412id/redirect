@@ -75,7 +75,7 @@
         @endif
       </div>
       @if (isset($data))
-        <h1>saat ini belum diaktifkan</h1>
+        <h1>saat ini belum tersedia</h1>
       @endif
     </div>
   </div>

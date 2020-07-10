@@ -15,18 +15,22 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware'=>['auth','verified']], function()
+Route::group(['middleware'=>'auth'], function()
 {
-  Route::get('/beranda', 'HomeController@index')->name('home');
   Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
-  Route::group(['prefix'=>'links'], function()
+  Route::group(['middleware'=>'verified'], function()
   {
-    Route::get('/tambah', 'LinksController@create')->name('link.create');
-    Route::post('/tambah', 'LinksController@store')->name('link.store');
-    Route::get('/ubah/{uuid}', 'LinksController@edit')->name('link.edit');
-    Route::post('/ubah/{uuid}', 'LinksController@update')->name('link.update');
-    Route::get('/hapus/{uuid}', 'LinksController@destroy')->name('link.destroy');
+    Route::get('/beranda', 'HomeController@index')->name('home');
+    
+    Route::group(['prefix'=>'links'], function()
+    {
+      Route::get('/tambah', 'LinksController@create')->name('link.create');
+      Route::post('/tambah', 'LinksController@store')->name('link.store');
+      Route::get('/ubah/{uuid}', 'LinksController@edit')->name('link.edit');
+      Route::post('/ubah/{uuid}', 'LinksController@update')->name('link.update');
+      Route::get('/hapus/{uuid}', 'LinksController@destroy')->name('link.destroy');
+    });
   });
 
 });

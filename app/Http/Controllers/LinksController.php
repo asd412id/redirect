@@ -11,7 +11,7 @@ class LinksController extends Controller
 {
   public function index($custom='')
   {
-    $link = Links::where('shortlink',Str::slug($custom))->first();
+    $link = Links::where('shortlink',Str::titleSlug($custom))->first();
     if ($link) {
       if (!$link->active) {
         return view('welcome',[
@@ -49,16 +49,16 @@ class LinksController extends Controller
 
     Validator::make($r->all(),$role,$msgs)->validate();
 
-    $cek = Links::where('shortlink',Str::slug($r->shortlink))->count();
+    $cek = Links::where('shortlink',Str::titleSlug($r->shortlink))->count();
 
-    if ($cek || Str::slug($r->shortlink) == 'signin' || Str::slug($r->shortlink) == 'signup' || Str::slug($r->shortlink) == 'login' || Str::slug($r->shortlink) == 'register') {
+    if ($cek || Str::titleSlug($r->shortlink) == 'signin' || Str::titleSlug($r->shortlink) == 'signup' || Str::titleSlug($r->shortlink) == 'login' || Str::titleSlug($r->shortlink) == 'register') {
       return redirect()->back()->withInput()->withErrors('Short link telah digunakan!');
     }
 
     $insert = new Links;
     $insert->uuid = Str::uuid();
     $insert->name = $r->name??$r->shortlink;
-    $insert->shortlink = Str::slug($r->shortlink);
+    $insert->shortlink = Str::titleSlug($r->shortlink);
     $insert->destination = $r->destination;
     $insert->active = $r->active;
     $insert->user_id = auth()->user()->id;
@@ -100,11 +100,11 @@ class LinksController extends Controller
 
     Validator::make($r->all(),$role,$msgs)->validate();
 
-    $cek = Links::where('shortlink',Str::slug($r->shortlink))
+    $cek = Links::where('shortlink',Str::titleSlug($r->shortlink))
     ->where('uuid','!=',$uuid)
     ->count();
 
-    if ($cek || Str::slug($r->shortlink) == 'signin' || Str::slug($r->shortlink) == 'signup' || Str::slug($r->shortlink) == 'login' || Str::slug($r->shortlink) == 'register') {
+    if ($cek || Str::titleSlug($r->shortlink) == 'signin' || Str::titleSlug($r->shortlink) == 'signup' || Str::titleSlug($r->shortlink) == 'login' || Str::titleSlug($r->shortlink) == 'register') {
       return redirect()->back()->withInput()->withErrors('Short link telah digunakan!');
     }
 
@@ -115,7 +115,7 @@ class LinksController extends Controller
     }
 
     $insert->name = $r->name??$r->shortlink;
-    $insert->shortlink = Str::slug($r->shortlink);
+    $insert->shortlink = Str::titleSlug($r->shortlink);
     $insert->destination = $r->destination;
     $insert->active = $r->active;
 

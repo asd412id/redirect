@@ -13,17 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware'=>'guest'], function()
-{
-  Route::get('/signin', 'Auth\LoginController@showLoginForm')->name('login');
-  Route::post('/signin', 'Auth\LoginController@login');
-  Route::get('/signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
-  Route::post('/signup', 'Auth\RegisterController@register');
-});
+Auth::routes(['verify' => true]);
 
-Route::group(['middleware'=>'auth'], function()
+Route::group(['middleware'=>['auth','verified']], function()
 {
-  Route::get('/dashboard', 'HomeController@index')->name('home');
+  Route::get('/beranda', 'HomeController@index')->name('home');
   Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
   Route::group(['prefix'=>'links'], function()
@@ -37,7 +31,6 @@ Route::group(['middleware'=>'auth'], function()
 
 });
 
-// Auth::routes();
 
-Route::get('/', 'LinksController@index');
-Route::get('/{custom}', 'LinksController@index');
+Route::get('/', 'LinksController@index')->name('index');
+Route::get('/{custom}', 'LinksController@goto');

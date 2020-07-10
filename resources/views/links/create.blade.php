@@ -28,7 +28,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">{{ url('/') }}/</span>
                   </div>
-                  <input type="text" name="shortlink" value="{{ old('shortlink') }}" class="form-control" placeholder="custom-link">
+                  <input type="text" name="shortlink" value="{{ old('shortlink') }}" class="form-control" placeholder="random">
                 </div>
               </div>
               <div class="form-group">

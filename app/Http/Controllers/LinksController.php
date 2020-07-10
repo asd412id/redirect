@@ -9,19 +9,24 @@ use Str;
 
 class LinksController extends Controller
 {
-  public function index($custom='')
+  public function index()
   {
-    $link = Links::where('shortlink',Str::titleSlug($custom))->first();
+    return view('welcome');
+  }
+
+  public function goto($custom)
+  {
+    $link = Links::where(\DB::raw('BINARY `shortlink`'),Str::titleSlug($custom))->first();
     if ($link) {
       if (!$link->active) {
-        return view('welcome',[
+        return view('goto',[
           'title'=>$link->name,
           'data'=>$link,
         ]);
       }
       return redirect($link->destination,302);
     }
-    return response()->view('welcome',[
+    return response()->view('goto',[
       'title'=>'Link tidak ditemukan'
     ])->setStatusCode(404);
   }
@@ -33,6 +38,20 @@ class LinksController extends Controller
     ];
 
     return view('links.create',$data);
+  }
+
+  public function generate($length=5,$count=1)
+  {
+    $slug = Str::random($length);
+    $cek = Links::where(\DB::raw('BINARY `shortlink`'),$slug)->first();
+    if ($cek) {
+      if ($count == ($length*62)) {
+        $length++;
+      }
+      $count++;
+      return $this->generate($length,$count);
+    }
+    return $slug;
   }
 
   public function store(Request $r)
@@ -49,7 +68,7 @@ class LinksController extends Controller
 
     Validator::make($r->all(),$role,$msgs)->validate();
 
-    $cek = Links::where('shortlink',Str::titleSlug($r->shortlink))->count();
+    $cek = Links::where(\DB::raw('BINARY `shortlink`'),Str::titleSlug($r->shortlink))->count();
 
     if ($cek || Str::titleSlug($r->shortlink) == 'signin' || Str::titleSlug($r->shortlink) == 'signup' || Str::titleSlug($r->shortlink) == 'login' || Str::titleSlug($r->shortlink) == 'register') {
       return redirect()->back()->withInput()->withErrors('Short link telah digunakan!');
@@ -58,7 +77,7 @@ class LinksController extends Controller
     $insert = new Links;
     $insert->uuid = Str::uuid();
     $insert->name = $r->name??$r->shortlink;
-    $insert->shortlink = Str::titleSlug($r->shortlink);
+    $insert->shortlink = Str::titleSlug($r->shortlink??$this->generate());
     $insert->destination = $r->destination;
     $insert->active = $r->active;
     $insert->user_id = auth()->user()->id;
@@ -100,7 +119,7 @@ class LinksController extends Controller
 
     Validator::make($r->all(),$role,$msgs)->validate();
 
-    $cek = Links::where('shortlink',Str::titleSlug($r->shortlink))
+    $cek = Links::where(\DB::raw('BINARY `shortlink`'),Str::titleSlug($r->shortlink))
     ->where('uuid','!=',$uuid)
     ->count();
 
@@ -115,7 +134,7 @@ class LinksController extends Controller
     }
 
     $insert->name = $r->name??$r->shortlink;
-    $insert->shortlink = Str::titleSlug($r->shortlink);
+    $insert->shortlink = Str::titleSlug($r->shortlink??$this->generate());
     $insert->destination = $r->destination;
     $insert->active = $r->active;
 

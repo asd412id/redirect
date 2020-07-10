@@ -17,10 +17,11 @@ class CreateTableLinks extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->string('name')->nullable();
-            $table->string('shortlink')->unique();
+            $table->string('shortlink');
             $table->text('destination');
             $table->boolean('active')->default(true);
             $table->bigInteger('user_id');
+            $table->bigInteger('hits')->default(0);
             $table->timestamps();
         });
     }

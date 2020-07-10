@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      \Schema::defaultStringLength(191);
       \Str::macro('titleSlug', function ($title,$separator='-') {
         // $title = mb_convert_case($title, MB_CASE_TITLE, 'UTF-8');
         $title = static::ascii($title);

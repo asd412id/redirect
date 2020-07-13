@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      if (env('APP_ENV') === 'production') {
+        \Illuminate\Support\Facades\URL::forceScheme('https');
+      }
       \Str::macro('titleSlug', function ($title,$separator='-') {
         // $title = mb_convert_case($title, MB_CASE_TITLE, 'UTF-8');
         $title = static::ascii($title);

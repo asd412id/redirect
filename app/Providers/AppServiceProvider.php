@@ -6,41 +6,38 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+  /**
+   * Register any application services.
+   *
+   * @return void
+   */
+  public function register()
+  {
+    //
+  }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-      if (env('APP_ENV') === 'production') {
-        \Illuminate\Support\Facades\URL::forceScheme('https');
-      }
-<<<<<<< HEAD
-=======
-      \Schema::defaultStringLength(191);
->>>>>>> 39bdd48b6c53a52a556571459d3038a31c55d80f
-      \Str::macro('titleSlug', function ($title,$separator='-') {
-        // $title = mb_convert_case($title, MB_CASE_TITLE, 'UTF-8');
-        $title = static::ascii($title);
-        // Convert all dashes/underscores into separator
-        $flip = $separator == '-' ? '_' : '-';
-        $title = preg_replace('!['.preg_quote($flip).']+!u', $separator, $title);
-        // Remove all characters that are not the separator, letters, numbers, or whitespace.
-        $title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', $title);
-        // Replace all separator characters and whitespace by a single separator
-        $title = preg_replace('!['.preg_quote($separator).'\s]+!u', $separator, $title);
-        return trim($title, $separator);
-      });
+  /**
+   * Bootstrap any application services.
+   *
+   * @return void
+   */
+  public function boot()
+  {
+    if (env('APP_ENV') === 'production') {
+      \Illuminate\Support\Facades\URL::forceScheme('https');
     }
+    \Schema::defaultStringLength(191);
+    \Str::macro('titleSlug', function ($title, $separator = '-') {
+      // $title = mb_convert_case($title, MB_CASE_TITLE, 'UTF-8');
+      $title = static::ascii($title);
+      // Convert all dashes/underscores into separator
+      $flip = $separator == '-' ? '_' : '-';
+      $title = preg_replace('![' . preg_quote($flip) . ']+!u', $separator, $title);
+      // Remove all characters that are not the separator, letters, numbers, or whitespace.
+      $title = preg_replace('![^' . preg_quote($separator) . '\pL\pN\s]+!u', '', $title);
+      // Replace all separator characters and whitespace by a single separator
+      $title = preg_replace('![' . preg_quote($separator) . '\s]+!u', $separator, $title);
+      return trim($title, $separator);
+    });
+  }
 }

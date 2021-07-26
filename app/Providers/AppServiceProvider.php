@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
       if (env('APP_ENV') === 'production') {
         \Illuminate\Support\Facades\URL::forceScheme('https');
       }
+<<<<<<< HEAD
+=======
+      \Schema::defaultStringLength(191);
+>>>>>>> 39bdd48b6c53a52a556571459d3038a31c55d80f
       \Str::macro('titleSlug', function ($title,$separator='-') {
         // $title = mb_convert_case($title, MB_CASE_TITLE, 'UTF-8');
         $title = static::ascii($title);

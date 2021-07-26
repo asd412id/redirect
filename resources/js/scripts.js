@@ -1,25 +1,25 @@
 var language = {
-  "decimal":        "",
-  "emptyTable":     "Data tidak tersedia",
-  "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-  "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 data",
-  "infoFiltered":   "(Difilter dari _MAX_ total data)",
-  "infoPostFix":    "",
-  "thousands":      ",",
-  "lengthMenu":     "Menampilkan _MENU_ data",
+  "decimal": "",
+  "emptyTable": "Data tidak tersedia",
+  "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+  "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+  "infoFiltered": "(Difilter dari _MAX_ total data)",
+  "infoPostFix": "",
+  "thousands": ",",
+  "lengthMenu": "Menampilkan _MENU_ data",
   "loadingRecords": "Memuat...",
-  "processing":     "Memproses...",
-  "search":         "Cari:",
-  "zeroRecords":    "Pencarian tidak ditemukan",
+  "processing": "Memproses...",
+  "search": "Cari:",
+  "zeroRecords": "Pencarian tidak ditemukan",
   "paginate": {
-    "first":      "Pertama",
-    "last":       "Terakhir",
-    "next":       "Selanjutnya",
-    "previous":   "Sebelumnya"
+    "first": "Pertama",
+    "last": "Terakhir",
+    "next": "Selanjutnya",
+    "previous": "Sebelumnya"
   }
 };
 
-$(document).ready(function(){
+$(document).ready(function () {
   if ($("#link-table").length > 0) {
     var table = $("#link-table").DataTable({
       language: language,
@@ -28,24 +28,26 @@ $(document).ready(function(){
       responsive: true,
       ajax: location.href,
       columns: [
-        {data: 'id'},
-        {data: 'name', name: 'name'},
-        {data: 'shortlnk', name: 'shortlnk'},
-        {data: 'destination', name: 'destination'},
-        {data: 'stt', name: 'stt'},
-        {data: 'created', name: 'created'},
-        {data: 'action', name: 'action', orderable: false, searchable: false},
-        {data: 'shortlink', name: 'shortlink',visible: false},
+        { data: 'id' },
+        { data: 'name', name: 'name' },
+        { data: 'shortlink', name: 'shortlink' },
+        { data: 'case_sensitive', name: 'case_sensitive' },
+        { data: 'destination', name: 'destination' },
+        { data: 'active', name: 'active' },
+        { data: 'hits', name: 'hits' },
+        { data: 'updated_at', name: 'updated_at' },
+        { data: 'action', name: 'action', orderable: false, searchable: false },
+        { data: 'shortlink', name: 'shortlink', visible: false },
       ],
       "language": language,
-      'drawCallback': function(settings){
-        $(".confirm").on('click',function(){
+      'drawCallback': function (settings) {
+        $(".confirm").on('click', function () {
           var txt = $(this).data('text');
           if (!confirm(txt)) {
             return false;
           }
         });
-        $(".get-link").click(function(e){
+        $(".get-link").click(function (e) {
           e.stopPropagation();
           e.stopImmediatePropagation();
           var $tempElement = $("<input>");
@@ -53,22 +55,22 @@ $(document).ready(function(){
           $tempElement.val($(this).text()).select();
           document.execCommand("Copy");
           $tempElement.remove();
-          alert("Link "+$(this).closest('tr').find('td:nth-child(2)').text()+" berhasil di salin!");
+          alert("Link " + $(this).closest('tr').find('td:nth-child(2)').text() + " berhasil di salin!");
         })
       }
     });
 
-    table.on( 'draw.dt', function () {
+    table.on('draw.dt', function () {
       var PageInfo = $('.dataTable').DataTable().page.info();
-      table.column(0, {search: 'applied', order: 'applied', page: 'applied'}).nodes().each( function (cell, i) {
-        cell.innerHTML = (i+1+PageInfo.start)+'.';
+      table.column(0, { search: 'applied', order: 'applied', page: 'applied' }).nodes().each(function (cell, i) {
+        cell.innerHTML = (i + 1 + PageInfo.start) + '.';
       });
     }).draw();
   }
 
   if ($(".notif").length > 0) {
-    setTimeout(()=>{
+    setTimeout(() => {
       $(".notif").fadeOut();
-    },5000)
+    }, 5000)
   }
 })

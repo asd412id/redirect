@@ -52893,17 +52893,23 @@ $(document).ready(function () {
         data: 'name',
         name: 'name'
       }, {
-        data: 'shortlnk',
-        name: 'shortlnk'
+        data: 'shortlink',
+        name: 'shortlink'
+      }, {
+        data: 'case_sensitive',
+        name: 'case_sensitive'
       }, {
         data: 'destination',
         name: 'destination'
       }, {
-        data: 'stt',
-        name: 'stt'
+        data: 'active',
+        name: 'active'
       }, {
-        data: 'created',
-        name: 'created'
+        data: 'hits',
+        name: 'hits'
+      }, {
+        data: 'updated_at',
+        name: 'updated_at'
       }, {
         data: 'action',
         name: 'action',
@@ -52972,8 +52978,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\PROJECTS\web\redirect\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\PROJECTS\web\redirect\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/d/PROJECTS/web/redirect/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/d/PROJECTS/web/redirect/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

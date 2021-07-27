@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,66 +15,69 @@
 
   <!-- Styles -->
   <style>
-  html, body {
-    background-color: #fff;
-    color: #636b6f;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    height: 100vh;
-    margin: 0;
-  }
+    html,
+    body {
+      background-color: #fff;
+      color: #636b6f;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 200;
+      height: 100vh;
+      margin: 0;
+    }
 
-  .full-height {
-    height: 100vh;
-  }
+    .full-height {
+      height: 100vh;
+    }
 
-  .flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
+    .flex-center {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
 
-  .position-ref {
-    position: relative;
-  }
+    .position-ref {
+      position: relative;
+    }
 
-  .top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
-  }
+    .top-right {
+      position: absolute;
+      right: 10px;
+      top: 18px;
+    }
 
-  .content {
-    text-align: center;
-  }
+    .content {
+      text-align: center;
+    }
 
-  .title {
-    font-size: 50px;
-  }
+    .title {
+      font-size: 50px;
+    }
 
-  .links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
+    .links>a {
+      color: #636b6f;
+      padding: 0 25px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
 
-  .m-b-md {
-    margin-bottom: 30px;
-  }
+    .m-b-md {
+      margin-bottom: 30px;
+    }
   </style>
 </head>
+
 <body>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            Short Link
+          Short Link
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -87,18 +91,18 @@
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
             @guest
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
-              </li>
-              @if (Route::has('register'))
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
-                </li>
-              @endif
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+            </li>
+            @if (Route::has('register'))
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+            </li>
+            @endif
             @else
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">{{ __('Beranda') }}</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('home') }}">{{ __('Beranda') }}</a>
+            </li>
             @endguest
           </ul>
         </div>
@@ -110,7 +114,10 @@
       <div class="title m-b-md">
         Perpendek Link-Mu di Sini
       </div>
+      <p class="text-center pt-3 pb-1"><em>Copyright &copy;2021 by <a href="https://www.facebook.com/aezdar"
+            target="_blank">asd412id</a></em></p>
     </div>
   </div>
 </body>
+
 </html>

@@ -61,7 +61,7 @@ class HomeController extends Controller
   {
     $rules = [
       'name' => 'required|max:255',
-      'email' => 'required|email|max:255',
+      'email' => 'required|email|max:255|unique:users,email,' . (auth()->user()->id) . ',id',
       'old_password' => 'required',
     ];
     $msgs = [
@@ -70,6 +70,7 @@ class HomeController extends Controller
       'email.required' => 'Alamat email tidak boleh kosong',
       'email.max' => 'Panjang email tidak boleh lebih dari 255 karakter',
       'email.email' => 'Format alamat email tidak benar',
+      'email.unique' => 'Alamat email sudah digunakan',
       'old_password.required' => 'Masukkan password untuk mengubah akun',
     ];
 

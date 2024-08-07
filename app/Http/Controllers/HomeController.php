@@ -27,7 +27,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = auth()->user()->links();
+            $data = auth()->user()->links()
+                ->when(!$request->get('order'), function ($q, $r) {
+                    $q->orderBy('created_at', 'desc');
+                });
             return DataTables::of($data)
                 ->addColumn('action', function ($row) {
 

@@ -17,12 +17,16 @@ class LinksController extends Controller
     public function goto($custom)
     {
         $link = Links::where(function ($q) use ($custom) {
-            $q->where(\DB::raw('BINARY `shortlink`'), Str::titleSlug($custom))
-                ->where('case_sensitive', 1);
-        })->orWhere(function ($q) use ($custom) {
-            $q->where('shortlink', Str::titleSlug($custom))
-                ->where('case_sensitive', 0);
-        })->first();
+            $q->where(function ($q) use ($custom) {
+                $q->where(\DB::raw('BINARY `shortlink`'), Str::titleSlug($custom))
+                    ->where('case_sensitive', 1);
+            })->orWhere(function ($q) use ($custom) {
+                $q->where('shortlink', Str::titleSlug($custom))
+                    ->where('case_sensitive', 0);
+            });
+        })
+            ->where('active', 1)
+            ->first();
         if ($link) {
             if (!$link->active) {
                 return view('goto', [

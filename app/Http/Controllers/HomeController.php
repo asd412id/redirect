@@ -45,7 +45,7 @@ class HomeController extends Controller
                 ->make(true);
 
             if (!$request->get('order')) {
-                $dataTable = $dataTables->order(function ($query) {
+                $dataTables = $dataTables->order(function ($query) {
                     $query->orderBy('created_at', 'desc');
                 });
             }

@@ -9,15 +9,18 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
-.btn.badge{
-  font-size: 0.9em;
+.btn.badge {
+    font-size: 0.9em;
 }
-.table-actions{
-  white-space: nowrap !important;
+
+.table-actions {
+    white-space: nowrap !important;
 }
-.dataTable{
-  width: 100% !important;
-  td:nth-child(4){
-    word-break: break-all !important;
-  }
+
+.dataTable {
+    width: 100% !important;
+
+    td:nth-child(5) {
+        word-break: break-all !important;
+    }
 }

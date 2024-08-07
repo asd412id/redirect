@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         if ($request->ajax()) {
             $data = auth()->user()->links();
-            $dataTables =  DataTables::of($data)
+            return DataTables::of($data)
                 ->addColumn('action', function ($row) {
 
                     $btn = '<div class="table-actions">';
@@ -43,14 +43,6 @@ class HomeController extends Controller
                 })
                 ->rawColumns(['shortlink', 'active', 'case_sensitive', 'action'])
                 ->make(true);
-
-            if (!$request->get('order')) {
-                $dataTables = $dataTables->order(function ($query) {
-                    $query->orderBy('created_at', 'desc');
-                });
-            }
-
-            return $dataTables;
         }
         return view('home');
     }

@@ -41,6 +41,11 @@ class Links extends Model
         return Carbon::parse($value)->format('d-m-Y H:i:s');
     }
 
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y H:i:s');
+    }
+
     public function getCaseSensitiveAttribute($value)
     {
         return $value ? '<span class="badge badge-warning">YA</span>' : '<span class="badge badge-secondary">TIDAK</span>';

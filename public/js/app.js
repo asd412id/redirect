@@ -9,14 +9,14 @@
 /******/ 		if (installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
             /******/
-}
+        }
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
             /******/
-};
+        };
 /******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
@@ -27,7 +27,7 @@
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
         /******/
-}
+    }
 /******/
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
@@ -41,19 +41,19 @@
 /******/ 		if (!__webpack_require__.o(exports, name)) {
 /******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
             /******/
-}
+        }
         /******/
-};
+    };
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function (exports) {
 /******/ 		if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
             /******/
-}
+        }
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
         /******/
-};
+    };
 /******/
 /******/ 	// create a fake namespace object
 /******/ 	// mode & 1: value is a module id, require it
@@ -70,7 +70,7 @@
 /******/ 		if (mode & 2 && typeof value != 'string') for (var key in value) __webpack_require__.d(ns, key, function (key) { return value[key]; }.bind(null, key));
 /******/ 		return ns;
         /******/
-};
+    };
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function (module) {
@@ -80,7 +80,7 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
         /******/
-};
+    };
 /******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function (object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
@@ -106,7 +106,7 @@
             module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/lib/axios.js");
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/adapters/xhr.js":
 /*!************************************************!*\
@@ -299,7 +299,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/axios.js":
 /*!*****************************************!*\
@@ -365,7 +365,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/cancel/Cancel.js":
 /*!*************************************************!*\
@@ -397,7 +397,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/cancel/CancelToken.js":
 /*!******************************************************!*\
@@ -467,7 +467,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/cancel/isCancel.js":
 /*!***************************************************!*\
@@ -485,7 +485,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/Axios.js":
 /*!**********************************************!*\
@@ -592,7 +592,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/InterceptorManager.js":
 /*!***********************************************************!*\
@@ -657,7 +657,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/buildFullPath.js":
 /*!******************************************************!*\
@@ -690,7 +690,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/createError.js":
 /*!****************************************************!*\
@@ -721,7 +721,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/dispatchRequest.js":
 /*!********************************************************!*\
@@ -813,7 +813,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/enhanceError.js":
 /*!*****************************************************!*\
@@ -868,7 +868,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/mergeConfig.js":
 /*!****************************************************!*\
@@ -954,7 +954,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/settle.js":
 /*!***********************************************!*\
@@ -992,7 +992,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/core/transformData.js":
 /*!******************************************************!*\
@@ -1025,7 +1025,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/defaults.js":
 /*!********************************************!*\
@@ -1134,10 +1134,10 @@
                 module.exports = defaults;
 
                 /* WEBPACK VAR INJECTION */
-}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+            }.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/bind.js":
 /*!************************************************!*\
@@ -1161,7 +1161,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/buildURL.js":
 /*!****************************************************!*\
@@ -1245,7 +1245,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/combineURLs.js":
 /*!*******************************************************!*\
@@ -1272,7 +1272,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/cookies.js":
 /*!***************************************************!*\
@@ -1338,7 +1338,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
 /*!*********************************************************!*\
@@ -1365,7 +1365,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js":
 /*!***********************************************************!*\
@@ -1446,7 +1446,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js":
 /*!***************************************************************!*\
@@ -1471,7 +1471,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/parseHeaders.js":
 /*!********************************************************!*\
@@ -1537,7 +1537,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/helpers/spread.js":
 /*!**************************************************!*\
@@ -1577,7 +1577,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/axios/lib/utils.js":
 /*!*****************************************!*\
@@ -1934,7 +1934,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
@@ -6366,7 +6366,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js":
 /*!*********************************************************************!*\
@@ -6543,7 +6543,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/datatables.net/js/jquery.dataTables.js":
 /*!*************************************************************!*\
@@ -13696,20 +13696,20 @@
                      *
                      * @return {integer} Current page index (zero based)
                      *//**
-                    * Set the current page.
-                    *
-                    * Note that if you attempt to show a page which does not exist, DataTables will
-                    * not throw an error, but rather reset the paging.
-                    *
-                    * @param {integer|string} action The paging action to take. This can be one of:
-                    *  * `integer` - The page index to jump to
-                    *  * `string` - An action to take:
-                    *    * `first` - Jump to first page.
-                    *    * `next` - Jump to the next page
-                    *    * `previous` - Jump to previous page
-                    *    * `last` - Jump to the last page.
-                    * @returns {DataTables.Api} this
-                    */
+                  * Set the current page.
+                  *
+                  * Note that if you attempt to show a page which does not exist, DataTables will
+                  * not throw an error, but rather reset the paging.
+                  *
+                  * @param {integer|string} action The paging action to take. This can be one of:
+                  *  * `integer` - The page index to jump to
+                  *  * `string` - An action to take:
+                  *    * `first` - Jump to first page.
+                  *    * `next` - Jump to the next page
+                  *    * `previous` - Jump to previous page
+                  *    * `last` - Jump to the last page.
+                  * @returns {DataTables.Api} this
+                  */
                     _api_register('page()', function (action) {
                         if (action === undefined) {
                             return this.page.info().page; // not an expensive call
@@ -13771,11 +13771,11 @@
                      * @return {integer} Current page length. Note `-1` indicates that all records
                      *   are to be shown.
                      *//**
-                    * Set the current page length.
-                    *
-                    * @param {integer} Page length to set. Use `-1` to show all records.
-                    * @returns {DataTables.Api} this
-                    */
+                  * Set the current page length.
+                  *
+                  * @param {integer} Page length to set. Use `-1` to show all records.
+                  * @returns {DataTables.Api} this
+                  */
                     _api_register('page.len()', function (len) {
                         // Note that we can't call this function 'length()' because `length`
                         // is a Javascript property of functions which defines how many arguments
@@ -13886,12 +13886,12 @@
                      *
                      * @return {string} Current Ajax source URL
                      *//**
-                    * Set the Ajax URL. Note that this will set the URL for all tables in the
-                    * current context.
-                    *
-                    * @param {string} url URL to set.
-                    * @returns {DataTables.Api} this
-                    */
+                  * Set the Ajax URL. Note that this will set the URL for all tables in the
+                  * current context.
+                  *
+                  * @param {string} url URL to set.
+                  * @returns {DataTables.Api} this
+                  */
                     _api_register('ajax.url()', function (url) {
                         var ctx = this.context;
 
@@ -15182,18 +15182,18 @@
                      *   direction of the sort (`desc` or `asc`) and, optionally, the third is the
                      *   index of the sorting order from the `column.sorting` initialisation array.
                      *//**
-                    * Set the ordering for the table.
-                    *
-                    * @param {integer} order Column index to sort upon.
-                    * @param {string} direction Direction of the sort to be applied (`asc` or `desc`)
-                    * @returns {DataTables.Api} this
-                    *//**
-                    * Set the ordering for the table.
-                    *
-                    * @param {array} order 1D array of sorting information to be applied.
-                    * @param {array} [...] Optional additional sorting conditions
-                    * @returns {DataTables.Api} this
-                    *//**
+                  * Set the ordering for the table.
+                  *
+                  * @param {integer} order Column index to sort upon.
+                  * @param {string} direction Direction of the sort to be applied (`asc` or `desc`)
+                  * @returns {DataTables.Api} this
+                  *//**
+                     * Set the ordering for the table.
+                     *
+                     * @param {array} order 1D array of sorting information to be applied.
+                     * @param {array} [...] Optional additional sorting conditions
+                     * @returns {DataTables.Api} this
+                     *//**
                     * Set the ordering for the table.
                     *
                     * @param {array} order 2D array of sorting information to be applied.
@@ -21551,7 +21551,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/jquery/dist/jquery.js":
 /*!********************************************!*\
@@ -32437,7 +32437,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
@@ -49602,10 +49602,10 @@
                 }.call(this));
 
                 /* WEBPACK VAR INJECTION */
-}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
+            }.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
 /*!***************************************************!*\
@@ -52234,10 +52234,10 @@
                 //# sourceMappingURL=popper.js.map
 
                 /* WEBPACK VAR INJECTION */
-}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+            }.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
@@ -52433,7 +52433,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
@@ -52465,7 +52465,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./node_modules/webpack/buildin/module.js":
 /*!***********************************!*\
@@ -52499,7 +52499,7 @@
 
 
             /***/
-}),
+        }),
 
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
@@ -52513,7 +52513,7 @@
             __webpack_require__(/*! ./scripts */ "./resources/js/scripts.js");
 
             /***/
-}),
+        }),
 
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
@@ -52561,7 +52561,7 @@
             // });
 
             /***/
-}),
+        }),
 
 /***/ "./resources/js/scripts.js":
 /*!*********************************!*\
@@ -52626,8 +52626,8 @@
                             data: 'hits',
                             name: 'hits'
                         }, {
-                            data: 'updated_at',
-                            name: 'updated_at'
+                            data: 'created_at',
+                            name: 'created_at'
                         }, {
                             data: 'action',
                             name: 'action',
@@ -52677,7 +52677,7 @@
             });
 
             /***/
-}),
+        }),
 
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
@@ -52689,7 +52689,7 @@
             // removed by extract-text-webpack-plugin
 
             /***/
-}),
+        }),
 
 /***/ 0:
 /*!*************************************************************!*\
@@ -52703,7 +52703,7 @@
 
 
             /***/
-})
+        })
 
     /******/
 });

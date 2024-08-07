@@ -11,15 +11,11 @@
 
   <title>@yield('title', 'Short Link')</title>
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
-
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-  <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   @yield('header')
 </head>
 

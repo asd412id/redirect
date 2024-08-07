@@ -1,4 +1,5 @@
-window._ = require('lodash');
+// window._ = require('lodash');
+import _ from 'lodash';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12,7 +13,7 @@ try {
 
     require('bootstrap');
     require('datatables.net-bs4');
-} catch (e) {}
+} catch (e) { }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

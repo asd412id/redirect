@@ -1,19 +1,17 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
-    Options -Indexes
-    DirectoryIndex public/index.php
+    
+    # If requesting the site root, go to public/index.php
+    RewriteRule ^$ public/index.php [L]
 
-    # Block direct access to sensitive files in the project root
-    RewriteRule ^(\.env|artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|vite\.config\.js|webpack.*|server\.php|README\.md)$ - [F,L,NC]
+    # If the request is already for /public, let it pass through
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteRule ^ - [L]
 
-    # Serve existing files in the root as-is (but not directories)
+    # Let existing files pass through
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^ - [L]
 
-    # If requesting the site root, go to public/
-    RewriteRule ^$ public/ [L]
-
-    # Otherwise, route everything to the public/ directory
+    # Send everything else to /public
     RewriteRule ^(.*)$ public/$1 [L,QSA]
 </IfModule>

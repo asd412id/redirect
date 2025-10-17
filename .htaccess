@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Block direct access to sensitive files in the project root
+    RewriteRule ^(\.env|artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|vite\.config\.js|webpack.*|server\.php|README\.md)$ - [F,L,NC]
+
+    # Serve existing files/directories in the root as-is
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise, route everything to the public/ directory
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>

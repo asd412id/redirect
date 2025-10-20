@@ -14,7 +14,11 @@ services:
       - app-net
 
   php:
-    image: bitnami/php-fpm:8.3
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+      args:
+        PHP_FPM_TAG: ${PHP_FPM_TAG:-8.3-fpm-alpine}
     restart: unless-stopped
     working_dir: /app
     volumes:
@@ -30,15 +34,15 @@ services:
       - app-net
 
   nginx:
-    image: bitnami/nginx:latest
+    image: nginx:alpine
     restart: unless-stopped
     ports:
-      - "${PORT:-8000}:8080"
+      - "${PORT:-8000}:80"
     depends_on:
       - php
     volumes:
       - ./:/app
-      - ./docker/nginx/laravel.conf:/opt/bitnami/nginx/conf/server_blocks/laravel.conf:ro
+      - ./docker/nginx/laravel.conf:/etc/nginx/conf.d/laravel.conf:ro
     environment:
       - TZ=${TZ:-Asia/Makassar}
     networks:

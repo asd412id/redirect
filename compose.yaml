@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   mariadb:
-    image: bitnami/mariadb:11
+    image: bitnami/mariadb:latest
     restart: unless-stopped
     environment:
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-rootpassword}

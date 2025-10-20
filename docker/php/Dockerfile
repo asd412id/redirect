@@ -1,22 +1,27 @@
 # syntax=docker/dockerfile:1
-ARG PHP_FPM_TAG=8.3-fpm-alpine
+ARG PHP_FPM_TAG=8.3-fpm
 FROM php:${PHP_FPM_TAG}
 
-# Install system dependencies for PHP extensions
+# Install system dependencies for PHP extensions (Debian-based)
 RUN set -eux; \
-    apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libzip-dev oniguruma-dev libpng-dev freetype-dev libjpeg-turbo-dev; \
-    apk add --no-cache bash icu-libs libzip oniguruma libpng freetype libjpeg-turbo git unzip; \
+    apt-get update; \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      $PHPIZE_DEPS \
+      git unzip ca-certificates curl pkg-config \
+      libicu-dev libzip-dev zlib1g-dev \
+      libpng-dev libjpeg-dev libfreetype6-dev \
+      libxml2-dev; \
     docker-php-ext-configure gd --with-jpeg --with-freetype; \
     docker-php-ext-install -j"$(nproc)" \
-        pdo_mysql \
-        mbstring \
-        bcmath \
-        zip \
-        intl \
-        gd \
-        opcache; \
+      pdo_mysql \
+      mbstring \
+      bcmath \
+      zip \
+      intl \
+      gd \
+      opcache; \
     pecl install redis && docker-php-ext-enable redis; \
-    apk del .build-deps
+    apt-get clean; rm -rf /var/lib/apt/lists/*
 
 # Copy Composer from official image
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer

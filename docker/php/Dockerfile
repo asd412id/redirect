@@ -35,9 +35,17 @@ RUN { \
       echo "date.timezone=${TZ}"; \
     } > /usr/local/etc/php/conf.d/laravel.ini
 
+# Configure PHP-FPM to use Unix socket and tune pool settings
+RUN set -eux; \
+    sed -ri 's|^;?listen = .*$|listen = /var/run/php-fpm/php-fpm.sock|' /usr/local/etc/php-fpm.d/www.conf; \
+    sed -ri 's|^;?pm = .*$|pm = dynamic|' /usr/local/etc/php-fpm.d/www.conf; \
+    sed -ri 's|^;?pm.max_children = .*$|pm.max_children = 50|' /usr/local/etc/php-fpm.d/www.conf; \
+    sed -ri 's|^;?pm.start_servers = .*$|pm.start_servers = 5|' /usr/local/etc/php-fpm.d/www.conf; \
+    sed -ri 's|^;?pm.min_spare_servers = .*$|pm.min_spare_servers = 5|' /usr/local/etc/php-fpm.d/www.conf; \
+    sed -ri 's|^;?pm.max_spare_servers = .*$|pm.max_spare_servers = 20|' /usr/local/etc/php-fpm.d/www.conf; \
+    { echo 'listen.owner = www-data'; echo 'listen.group = www-data'; echo 'listen.mode = 0666'; } >> /usr/local/etc/php-fpm.d/www.conf
+
 WORKDIR /app
 
-# Expose PHP-FPM port
-EXPOSE 9000
-
-CMD ["php-fpm"]
+# Ensure socket directory exists at runtime, then start FPM
+CMD ["sh","-lc","mkdir -p /var/run/php-fpm && php-fpm"]

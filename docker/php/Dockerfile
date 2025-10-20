@@ -9,6 +9,7 @@ RUN set -eux; \
       $PHPIZE_DEPS \
       git unzip ca-certificates curl pkg-config \
       libicu-dev libzip-dev zlib1g-dev \
+      libonig-dev \
       libpng-dev libjpeg-dev libfreetype6-dev \
       libxml2-dev; \
     docker-php-ext-configure gd --with-jpeg --with-freetype; \

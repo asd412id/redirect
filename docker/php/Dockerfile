@@ -47,5 +47,5 @@ RUN set -eux; \
 
 WORKDIR /app
 
-# Ensure socket directory exists at runtime, then start FPM
-CMD ["sh","-lc","mkdir -p /var/run/php-fpm && php-fpm"]
+# Ensure socket dir is owned by www-data, then start FPM in foreground
+CMD ["sh","-lc","install -d -o www-data -g www-data -m 775 /var/run/php-fpm && php-fpm -F"]

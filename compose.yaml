@@ -29,6 +29,12 @@ services:
       - TZ=${TZ:-Asia/Makassar}
     depends_on:
       - mariadb
+    healthcheck:
+      test: ["CMD-SHELL", "php-fpm -t 2>/dev/null || exit 1; test -S /var/run/php-fpm/php-fpm.sock"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
     networks:
       - app-net
 
@@ -38,7 +44,8 @@ services:
     ports:
       - "${PORT:-8000}:80"
     depends_on:
-      - php
+      php:
+        condition: service_healthy
     volumes:
       - ./:/app
       - ./docker/nginx/laravel.conf:/etc/nginx/conf.d/default.conf:ro

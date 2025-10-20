@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: bitnami/mariadb:11
+    restart: unless-stopped
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-rootpassword}
+      - MARIADB_DATABASE=${DB_DATABASE:-shortit}
+      - MARIADB_USER=${DB_USERNAME:-root}
+      - MARIADB_PASSWORD=${DB_PASSWORD:-password}
+      - TZ=${TZ:-Asia/Makassar}
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+    networks:
+      - app-net
+
+  php:
+    image: bitnami/php-fpm:8.3
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}
+      - PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE:-20M}
+      - PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE:-21M}
+      - TZ=${TZ:-Asia/Makassar}
+    depends_on:
+      - mariadb
+    networks:
+      - app-net
+
+  nginx:
+    image: bitnami/nginx:latest
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:8080"
+    depends_on:
+      - php
+    volumes:
+      - ./:/app
+      - ./docker/nginx/laravel.conf:/opt/bitnami/nginx/conf/server_blocks/laravel.conf:ro
+    environment:
+      - TZ=${TZ:-Asia/Makassar}
+    networks:
+      - app-net
+
+volumes:
+  mariadb_data:
+
+networks:
+  app-net:
+    driver: bridge
